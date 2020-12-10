@@ -1,0 +1,62 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+
+  <div class="jumbotron">
+    <h1>Categorias de productos</h1>
+    <hr>
+    <form (ngSubmit)="registrar(forma)" #forma="ngForm">
+      <div class="input-group-prepend">
+        <span class="input-group-text col-2">Nombre</span>
+        <input type="text" class="form-control" name="descripcion" [(ngModel)]="categoria.descripcion">
+      </div><br>
+      <div class="input-group-prepend">
+        <span class="input-group-text col-2">Usuario</span>
+        <input type="text" class="form-control" name="usuario" [(ngModel)]="categoria.usuario">
+      </div><br>
+      <button type="submit" class="btn btn-block btn-outline-success">Registrar</button>
+    </form>
+  </div>
+
+  <div class="jumbotron">
+    <h1>Cambio de Categoria</h1>
+    <hr>
+    <form (ngSubmit)="actualizar(forma)" #actu="ngForm">
+      <div class="input-group-prepend">
+        <span class="input-group-text col-2">Id</span>
+        <input type="text" class="form-control" name="id" [(ngModel)]="categoria.id">
+      </div><br>
+      <div class="input-group-prepend">
+        <span class="input-group-text col-2">Categoria</span>
+        <input type="text" class="form-control" name="descripcion" [(ngModel)]="categoria.descripcion">
+      </div><br>
+      <div class="input-group-prepend">
+        <span class="input-group-text col-2">Usuario</span>
+        <input type="text" class="form-control" name="usuario" [(ngModel)]="categoria.usuario">
+      </div><br>
+      <button type="submit" class="btn btn-block btn-outline-warning">Actualizar</button>
+    </form>
+  </div>
+
+  <table class="table">
+    <thead class="bg-dark">
+      <tr style="color: azure;">
+        <th scope="col">Numero</th>
+        <th scope="col">Id</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Usuario</th>
+        <th scope="col">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody class="table-secondary">
+      <tr *ngFor="let tab of tabla; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{tab._id}}</td>
+        <td>{{tab.descripcion}}</td>
+        <td>{{tab.usuario._id}} </td>
+        <td><button class="btn btn-outline-danger ml-3" (click)="elimiar(tab._id)">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<router-outlet></router-outlet>
